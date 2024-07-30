@@ -1,4 +1,5 @@
-import { Router } from "express";
+import { Router, Request } from "express";
+import { Session, SessionData } from "express-session";
 
 const pageRouter = Router();
 
