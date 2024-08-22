@@ -13,7 +13,17 @@ export default {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                namedExport: false,
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.(ts|tsx)$/, // Test for .ts and .tsx files
