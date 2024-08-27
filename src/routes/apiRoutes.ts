@@ -1,5 +1,11 @@
 import { Router } from "express";
-import { login, logOut, registration } from "../controllers/userController";
+import {
+  sendFriendRequest,
+  login,
+  logOut,
+  registration,
+  cancelFriendRequest,
+} from "../controllers/userController";
 import {
   regValidationMiddleware,
   loginValidationMiddleware,
@@ -15,5 +21,11 @@ apiRouter.post("/api/user/login", loginValidationMiddleware, login);
 
 // Log out the user
 apiRouter.post("/api/user/logout", logOut);
+
+// Send Friend Request
+apiRouter.post("/api/friends/sendrequest", sendFriendRequest);
+
+// Cancel Friend Request
+apiRouter.post("/api/friends/canselrequest", cancelFriendRequest);
 
 export default apiRouter;

@@ -40,6 +40,13 @@ export default {
         use: "babel-loader", // Use Babel to handle TypeScript and JSX
         exclude: /node_modules/, // Exclude the node_modules folder
       },
+      {
+        test: /\.(png|jpe?g|svg)$/i, // Test for .png, .jpg, .jpeg, and .svg files
+        type: "asset/resource", // Handle images as resources
+        generator: {
+          filename: "static/assets/img/[name][ext]", // Output images to 'static' folder with original names
+        },
+      },
     ],
   },
   mode: "production", // Can be 'development' or 'production'

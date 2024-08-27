@@ -1,13 +1,16 @@
 import { render } from "solid-js/web";
 
 import "./global.css";
-import Signature from "./components/signature";
+
+import { AppProvider } from "./store/AppCotext";
+import { HomePage } from "./routes/homePage";
 
 const App = () => {
   return (
-    <div class="asd">
-      <h1 class="custom-font-1"> asdiuashdiuasd </h1>
-      <Signature />
+    <div>
+      <AppProvider>
+        <HomePage />
+      </AppProvider>
     </div>
   );
 };

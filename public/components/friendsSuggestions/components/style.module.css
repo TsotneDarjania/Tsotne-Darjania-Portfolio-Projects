@@ -1,0 +1,32 @@
+.raw {
+  display: flex;
+  gap: 5px;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+.name {
+  font-size: 1.2rem;
+  color: rgb(116, 107, 99);
+}
+
+.button {
+  font-size: 1.2rem;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  background-color: rgb(56, 54, 49);
+
+  padding: 7px;
+
+  border-radius: 20px;
+
+  border: 7px double wheat;
+
+  height: min-content;
+
+  transition: all 0.3s;
+}
+.button:hover {
+  background-color: rgb(90, 73, 31);
+}

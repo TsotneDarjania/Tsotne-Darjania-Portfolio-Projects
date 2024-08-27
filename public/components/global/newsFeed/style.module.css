@@ -1,0 +1,33 @@
+.newsFeed {
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  height: 100vh;
+
+  width: 80vw;
+
+  background-color: rgb(49, 39, 30);
+
+  overflow-y: scroll;
+}
+
+/* width */
+.newsFeed::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+.newsFeed::-webkit-scrollbar-track {
+  background: #312214;
+}
+
+/* Handle */
+.newsFeed::-webkit-scrollbar-thumb {
+  background: #333333;
+}
+
+/* Handle on hover */
+.newsFeed::-webkit-scrollbar-thumb:hover {
+  background: #f8f8f8;
+}
