@@ -1,0 +1,30 @@
+.overlay {
+  position: fixed;
+
+  left: 0;
+  top: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+
+  background-color: black;
+
+  opacity: 0;
+
+  animation-name: show;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+
+  z-index: 20;
+
+  cursor: context-menu;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}

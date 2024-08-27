@@ -1,0 +1,25 @@
+.friendsSuggestions {
+  position: fixed;
+  right: 0px;
+  top: 70vh;
+
+  width: 18vw;
+
+  border-top: 3px solid rgb(54, 49, 46);
+}
+
+.title {
+  position: absolute;
+  top: -28px;
+
+  color: rgb(116, 107, 99);
+  font-size: 1.2rem;
+}
+
+.suggestions {
+  position: relative;
+  margin-top: 10px;
+  height: 24vh;
+
+  overflow-y: scroll;
+}

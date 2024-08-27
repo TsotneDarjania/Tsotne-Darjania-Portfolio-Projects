@@ -10,8 +10,18 @@
 
     <script>
       window.userData = {
-        authenticated: "<%= authenticated %>",
         username: "<%= username %>",
+        userId: "<%= userId %>",
+        sendNotifications: JSON.parse(
+          `<%- JSON.stringify(sendNotifications) %>`
+        ),
+      };
+
+      window.appData = {
+        authenticated: "<%= authenticated %>",
+        friendSuggestions: JSON.parse(
+          `<%- JSON.stringify(friendsSuggestions) %>`
+        ),
       };
     </script>
 

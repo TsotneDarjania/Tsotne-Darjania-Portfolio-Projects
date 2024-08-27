@@ -1,6 +1,17 @@
 .signature {
-  background-color: black;
   position: absolute;
-  left: 0;
-  bottom: 0;
+  left: 10px;
+  bottom: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2p;
+
+  justify-content: start;
+  align-items: start;
+
+  font-size: 18px;
+  border: 1px solid rgb(48, 70, 57);
+  padding: 4px;
+  background-color: rgb(214, 211, 165);
 }

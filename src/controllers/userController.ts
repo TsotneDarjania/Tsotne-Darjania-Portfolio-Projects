@@ -3,6 +3,9 @@ import { validationResult } from "express-validator";
 import bcrypt from "bcryptjs";
 import { SessionData } from "express-session";
 import User from "../models/user";
+import { INotification } from "../models/notification";
+import { Mongoose, Schema } from "mongoose";
+import Notification from "../models/notification";
 
 export interface SessionRequest extends SessionData {
   userId?: string;
@@ -62,12 +65,8 @@ export async function login(req: Request, res: Response) {
         .json({ errors: [{ msg: "Invalid email or password" }] });
     }
 
-    console.log("USer Passowrd Is " + user.password);
-    console.log("Password is " + password);
-
     // Check if password is correct
     const isPasswordValid = await bcrypt.compare(password, user.password);
-    console.log(isPasswordValid);
     if (!isPasswordValid) {
       return res
         .status(400)
@@ -98,4 +97,36 @@ export function logOut(req: Request, res: Response) {
 
 export async function getUserById(userId: string) {
   return await User.findById(userId);
+}
+
+export async function sendFriendRequest(req: Request, res: Response) {
+  const { sender, recipient } = req.body;
+
+  try {
+    // Create the new notification object
+    const newNotification: INotification = new Notification({
+      sender: sender,
+      recipient: recipient,
+      type: "friend_request",
+    });
+
+    // Save the notification to the database
+    await newNotification.save();
+
+    res.status(200).json({ message: "Friend request sent" });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+}
+
+export async function cancelFriendRequest(req: Request, res: Response) {
+  const { sender, recipient } = req.body;
+
+  try {
+    await Notification.deleteOne({ sender, recipient });
+
+    res.status(200).json({ message: "Friend request canceled" });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
 }
