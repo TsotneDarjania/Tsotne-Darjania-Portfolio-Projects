@@ -10,6 +10,7 @@ export function Overlay() {
         setAppData((prev) => ({
           ...prev,
           isOpenAuthenticatioModal: { isOpen: false, type: undefined },
+          isOpenNotificationsModal: false,
         }));
       }}
       class={style.overlay}

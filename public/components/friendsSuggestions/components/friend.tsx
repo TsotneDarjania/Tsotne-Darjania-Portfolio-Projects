@@ -1,6 +1,10 @@
 import { batch, createSignal } from "solid-js";
 import { useApp } from "../../../store/AppCotext";
 import style from "./style.module.css";
+import {
+  canselFriendRequestEvent,
+  makeFriendSuggestionEvent,
+} from "../../../core/socket";
 
 export default function Friend({
   id,
@@ -13,8 +17,8 @@ export default function Friend({
 
   const [isAlreadySent, setIsAlreadySent] = createSignal(false);
 
-  userData().sendNotifications.forEach((notification) => {
-    if (notification.recipient === id) {
+  userData().sendedNotifications.forEach((notification) => {
+    if (notification.recipient.id === id) {
       setIsAlreadySent(true);
     }
   });
@@ -25,9 +29,13 @@ export default function Friend({
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ sender: userData().userId, recipient: id }),
+      body: JSON.stringify({
+        senderId: userData().userId,
+        recipientId: id,
+      }),
     }).then((res) => {
       if (res.status === 200) {
+        canselFriendRequestEvent(userData().userId, id);
         return 200;
       } else {
         return 500;
@@ -41,9 +49,15 @@ export default function Friend({
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ sender: userData().userId, recipient: id }),
+      body: JSON.stringify({
+        senderId: userData().userId,
+        senderName: userData().username,
+        recipientId: id,
+        recipientName: username,
+      }),
     }).then((res) => {
       if (res.status === 200) {
+        makeFriendSuggestionEvent(userData().userId, id);
         return 200;
       } else {
         return 500;

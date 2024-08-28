@@ -100,13 +100,19 @@ export async function getUserById(userId: string) {
 }
 
 export async function sendFriendRequest(req: Request, res: Response) {
-  const { sender, recipient } = req.body;
+  const { senderId, senderName, recipientId, recipientName } = req.body;
 
   try {
     // Create the new notification object
     const newNotification: INotification = new Notification({
-      sender: sender,
-      recipient: recipient,
+      sender: {
+        id: senderId,
+        name: senderName,
+      },
+      recipient: {
+        id: recipientId,
+        name: recipientName,
+      },
       type: "friend_request",
     });
 
@@ -120,13 +126,61 @@ export async function sendFriendRequest(req: Request, res: Response) {
 }
 
 export async function cancelFriendRequest(req: Request, res: Response) {
-  const { sender, recipient } = req.body;
+  const { senderId, recipientId } = req.body;
 
   try {
-    await Notification.deleteOne({ sender, recipient });
+    await await Notification.deleteOne({
+      "sender.id": senderId,
+      "recipient.id": recipientId,
+    });
 
     res.status(200).json({ message: "Friend request canceled" });
   } catch (error) {
     res.status(500).json({ error });
   }
+}
+
+export async function acceptFriendRequest(req: Request, res: Response) {
+  const { senderId, recipientId } = req.body;
+
+  try {
+    await User.findByIdAndUpdate(senderId, {
+      $push: { friends: recipientId },
+    });
+
+    await User.findByIdAndUpdate(recipientId, {
+      $push: { friends: senderId },
+    });
+
+    await Notification.deleteOne({
+      "sender.id": senderId,
+      "recipient.id": recipientId,
+    });
+
+    await Notification.deleteOne({
+      "sender.id": recipientId,
+      "recipient.id": senderId,
+    });
+
+    res.status(200).json({ message: "Friend request canceled" });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+}
+
+export async function getFriendsList(req: Request, res: Response) {
+  const { userId } = req.body;
+
+  const user = await User.findById(userId);
+
+  const friends = await (
+    await User.find({ _id: { $in: user?.friends } })
+  ).map((friend) => {
+    return {
+      username: friend?.username,
+      id: friend?._id,
+    };
+  });
+
+  res.status(200).json({ friends });
 }

@@ -12,8 +12,11 @@
       window.userData = {
         username: "<%= username %>",
         userId: "<%= userId %>",
-        sendNotifications: JSON.parse(
-          `<%- JSON.stringify(sendNotifications) %>`
+        sendedNotifications: JSON.parse(
+          `<%- JSON.stringify(sendedNotifications) %>`
+        ),
+        receivedNotifications: JSON.parse(
+          `<%- JSON.stringify(receivedNotifications) %>`
         ),
       };
 

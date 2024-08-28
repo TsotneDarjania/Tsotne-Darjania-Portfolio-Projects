@@ -1,11 +1,12 @@
-import { SendNotification } from "../store/AppCotext";
+import { Notification } from "../store/AppCotext";
 import { DomElements } from "./dom";
 
 export interface CustomWindow extends Window {
   userData: {
     username: string;
     userId: string;
-    sendNotifications: SendNotification[];
+    sendedNotifications: Notification[];
+    receivedNotifications: Notification[];
   };
 
   appData: {

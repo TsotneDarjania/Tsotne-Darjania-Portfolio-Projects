@@ -1,10 +1,9 @@
 .friendsList {
   position: fixed;
-  right: -40px;
+  right: 0px;
   top: 20vh;
 
-  width: 20vw;
-  height: 75vh;
+  width: 18vw;
 
   border-top: 3px solid rgb(54, 49, 46);
 }
@@ -15,4 +14,12 @@
 
   color: rgb(116, 107, 99);
   font-size: 1.2rem;
+}
+
+.friends {
+  position: relative;
+  margin-top: 10px;
+  height: 42vh;
+
+  overflow-y: scroll;
 }

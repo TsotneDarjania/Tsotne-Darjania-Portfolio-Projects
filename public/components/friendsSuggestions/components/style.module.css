@@ -17,13 +17,13 @@
   cursor: pointer;
   background-color: rgb(56, 54, 49);
 
-  padding: 7px;
+  max-width: 130px;
+  min-width: 130px;
+  height: 50px;
 
   border-radius: 20px;
 
   border: 7px double wheat;
-
-  height: min-content;
 
   transition: all 0.3s;
 }

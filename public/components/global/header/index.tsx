@@ -1,3 +1,4 @@
+import { createEffect } from "solid-js";
 import { useApp } from "../../../store/AppCotext";
 import style from "./style.module.css";
 
@@ -44,11 +45,23 @@ export default function Header() {
                 src={"static/img/menu.svg"}
                 alt="user"
               />
+
               <img
                 class={style.notificationsIcon}
                 src={"static/img/notification-icon.png"}
                 alt="user"
+                onclick={() => {
+                  setAppData((prev) => ({
+                    ...prev,
+                    isOpenNotificationsModal: true,
+                  }));
+                }}
               />
+              <div class={style.notificationNumber + " custom-font-1"}>
+                {userData().receivedNotifications.length > 0
+                  ? userData().receivedNotifications.length
+                  : ""}
+              </div>
             </div>
           </>
         ) : (

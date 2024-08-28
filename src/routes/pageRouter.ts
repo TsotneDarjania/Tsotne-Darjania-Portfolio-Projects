@@ -13,21 +13,32 @@ pageRouter.get("/", async (req, res) => {
   // Fetch users excluding the current user and only selecting the username field
   const users = await User.find(
     { _id: { $ne: session.userId } },
-    { username: 1 }
+    { username: 1, friends: 1 }
   )
+    .sort({ _id: -1 })
     .limit(5)
     .lean(); // Using .lean() for better performance
 
-  const sendNotifications = await Notification.find({
-    sender: session.userId,
+  const frienSuggestions = users.filter((suggestionUser) => {
+    // @ts-ignore
+    return !user?.friends?.includes(suggestionUser._id);
+  });
+
+  const sendedNotifications = await Notification.find({
+    "sender.id": session.userId, // Use dot notation to access the nested field
+  }).lean();
+
+  const receivedNotifications = await Notification.find({
+    "recipient.id": session.userId,
   }).lean();
 
   res.render("index", {
     authenticated: isAuthenticated(req),
     username: user?.username,
     userId: session.userId,
-    friendsSuggestions: users,
-    sendNotifications: sendNotifications,
+    friendsSuggestions: frienSuggestions,
+    sendedNotifications: sendedNotifications,
+    receivedNotifications: receivedNotifications,
   });
 });
 

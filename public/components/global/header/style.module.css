@@ -132,3 +132,19 @@ ul {
 .notificationsIcon:hover {
   background-color: rgb(247, 203, 115);
 }
+
+.notificationNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  bottom: -74px;
+  width: 40px;
+  height: 40px;
+  right: 86px;
+
+  color: rgb(226, 107, 107);
+  font-size: 1.6rem;
+  font-weight: bold;
+}

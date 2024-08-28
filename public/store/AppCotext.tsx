@@ -2,7 +2,7 @@ import { createSignal, createContext, useContext, JSX } from "solid-js";
 import { CustomWindow } from "../config/types";
 
 // Define the type for your app data
-type AppData = {
+export type AppData = {
   isOpenAuthenticatioModal: {
     isOpen: boolean;
     type: "login" | "register" | undefined;
@@ -10,12 +10,26 @@ type AppData = {
   friendSuggestions: { _id: string; username: string }[];
   isAuthenticated: boolean;
   isOpenLoading: boolean;
+  isOpenNotificationsModal: boolean;
 };
 
-export type SendNotification = {
+export type UserData = {
+  username: string;
+  userId: string;
+  sendedNotifications: Notification[];
+  receivedNotifications: Notification[];
+};
+
+export type Notification = {
   _id: string;
-  sender: string;
-  recipient: string;
+  sender: {
+    id: string;
+    name: string;
+  };
+  recipient: {
+    id: string;
+    name: string;
+  };
   type: "friend_request";
   status: "pending" | "accepted" | "rejected";
 };
@@ -27,9 +41,12 @@ type AppContextType = {
   userData: () => {
     username: string;
     userId: string;
-    sendNotifications: SendNotification[];
+    sendedNotifications: Notification[];
+    receivedNotifications: Notification[];
   };
-  setUserData: (value: { username: string }) => void;
+  setUserData: (
+    value: Partial<UserData> | ((prev: UserData) => UserData)
+  ) => void;
 };
 
 const AppContext = createContext<AppContextType>();
@@ -46,6 +63,7 @@ export function AppProvider(props: { children: JSX.Element }) {
     isAuthenticated:
       customWindow.appData.authenticated === "true" ? true : false,
     isOpenLoading: false,
+    isOpenNotificationsModal: false,
   });
 
   const [userData, setUserData] = createSignal({
@@ -54,7 +72,8 @@ export function AppProvider(props: { children: JSX.Element }) {
         ? customWindow.userData.username
         : "",
     userId: customWindow.userData.userId,
-    sendNotifications: customWindow.userData.sendNotifications,
+    sendedNotifications: customWindow.userData.sendedNotifications,
+    receivedNotifications: customWindow.userData.receivedNotifications,
   });
 
   return (
