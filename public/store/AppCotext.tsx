@@ -18,6 +18,12 @@ export type UserData = {
   userId: string;
   sendedNotifications: Notification[];
   receivedNotifications: Notification[];
+  friends: Friend[];
+};
+
+export type Friend = {
+  id: string;
+  username: string;
 };
 
 export type Notification = {
@@ -43,6 +49,7 @@ type AppContextType = {
     userId: string;
     sendedNotifications: Notification[];
     receivedNotifications: Notification[];
+    friends: Friend[];
   };
   setUserData: (
     value: Partial<UserData> | ((prev: UserData) => UserData)
@@ -74,6 +81,7 @@ export function AppProvider(props: { children: JSX.Element }) {
     userId: customWindow.userData.userId,
     sendedNotifications: customWindow.userData.sendedNotifications,
     receivedNotifications: customWindow.userData.receivedNotifications,
+    friends: [],
   });
 
   return (

@@ -29,6 +29,13 @@ io.on("connection", (socket) => {
       recipientId,
     });
   });
+
+  socket.on("accept-friend-request", (data) => {
+    const { senderId, recipientId } = data;
+    socket.broadcast.emit("update-friends", {
+      senderId,
+    });
+  });
 });
 
 // Connect to the database

@@ -3,7 +3,7 @@ import style from "./style.module.css";
 export default function Friend({
   user,
 }: {
-  user: { username: string; _id: string };
+  user: { username: string; id: string };
 }) {
   return (
     <div class={style.row}>

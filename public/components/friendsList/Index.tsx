@@ -4,12 +4,14 @@ import style from "./style.module.css";
 import Friend from "./components/friend";
 
 export default function FriendsList() {
-  const { userData } = useApp();
-  const [friends, setFriends] = createSignal([]); // Signal to hold the friends list
+  const { userData, setUserData } = useApp();
 
   onMount(async () => {
     const friendsList = await getFriendsList();
-    setFriends(friendsList); // Update the signal with the fetched friends
+    setUserData({
+      ...userData(),
+      friends: friendsList,
+    });
   });
 
   async function getFriendsList() {
@@ -30,8 +32,8 @@ export default function FriendsList() {
     <div class={style.friendsList}>
       <h1 class={`${style.title} custom-font-1`}>Friends List</h1>
       <div class={style.friends}>
-        {friends().length > 0 ? (
-          friends().map((friend) => <Friend user={friend} />)
+        {userData().friends.length > 0 ? (
+          userData().friends.map((friend) => <Friend user={friend} />)
         ) : (
           <p>No friends found.</p>
         )}

@@ -1,3 +1,4 @@
+import { acceptFriendRequestEvent } from "../../../../../../core/socket";
 import { Notification, useApp } from "../../../../../../store/AppCotext";
 import style from "./style.module.css";
 
@@ -20,6 +21,10 @@ export default function FriendRequestRow({
       }),
     }).then((res) => {
       if (res.status === 200) {
+        acceptFriendRequestEvent(
+          notification.sender.id,
+          notification.recipient.id
+        );
         return 200;
       } else {
         return 500;

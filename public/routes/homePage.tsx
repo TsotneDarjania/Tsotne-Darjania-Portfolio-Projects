@@ -12,7 +12,7 @@ import { useApp } from "../store/AppCotext";
 import { createEffect } from "solid-js";
 
 export function HomePage() {
-  const { appData, userData, setUserData } = useApp();
+  const { appData, setAppData, userData, setUserData } = useApp();
 
   const randomStartAnimationDelay = () => {
     const delay = Math.floor(Math.random() * 120);
@@ -21,7 +21,7 @@ export function HomePage() {
 
   createEffect(() => {
     if (appData().isAuthenticated) {
-      initSocketConnection(userData().userId, setUserData);
+      initSocketConnection(userData().userId, setUserData, setAppData);
     }
   });
 
