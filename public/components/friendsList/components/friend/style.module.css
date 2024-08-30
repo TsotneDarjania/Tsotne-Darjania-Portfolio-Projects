@@ -15,6 +15,24 @@
 .name {
   font-size: 1.2rem;
   color: rgb(116, 107, 99);
+  cursor: pointer;
+  position: relative; /* Ensure the pseudo-element is positioned relative to .name */
+}
+
+.name::after {
+  content: ""; /* Required for the pseudo-element */
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px; /* Adjust the distance below the text */
+  height: 2px; /* Thickness of the underline */
+  background-color: rgb(116, 107, 99); /* Color of the underline */
+  transform: scaleX(0); /* Initially hide the underline */
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.name:hover::after {
+  transform: scaleX(1); /* Show the underline on hover */
 }
 
 .activeIndicator {

@@ -3,6 +3,8 @@ import FriendsSuggestions from "../components/friendsSuggestions";
 import Header from "../components/global/header";
 import Loading from "../components/global/loading";
 import { AuthenticationModal } from "../components/global/modal/authenticationModal";
+import { ChatModal } from "../components/global/modal/chatModal";
+import FriendDetailsModal from "../components/global/modal/friendDetailsModal";
 import { NotificationsModal } from "../components/global/modal/notificationModal";
 import { NewsFeed } from "../components/global/newsFeed";
 import { Overlay } from "../components/global/overlay";
@@ -40,6 +42,19 @@ export function HomePage() {
       <Header />
       <Signature />
 
+      {/* Friend Details Modal */}
+      {appData().friendDetailsModalState.isOpen && (
+        <FriendDetailsModal
+          username={appData().friendDetailsModalState.username}
+          id={appData().friendDetailsModalState.userId}
+        />
+      )}
+
+      {/* Chat Modal */}
+      {appData().chatModalState.isOpen && (
+        <ChatModal friendId={appData().chatModalState.friendId} />
+      )}
+
       {/* Notifications Modal */}
       {appData().isOpenNotificationsModal && <NotificationsModal />}
 
@@ -61,8 +76,11 @@ export function HomePage() {
       {appData().isOpenAuthenticatioModal.type === "login" && (
         <AuthenticationModal title="Login" />
       )}
-      {appData().isOpenAuthenticatioModal.isOpen ||
-        (appData().isOpenNotificationsModal && <Overlay />)}
+      {appData().isOpenNotificationsModal && <Overlay />}
+      {appData().isOpenAuthenticatioModal.isOpen && <Overlay />}
+
+      {appData().friendDetailsModalState.isOpen && <Overlay />}
+      {appData().chatModalState.isOpen && <Overlay />}
     </>
   );
 }

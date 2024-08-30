@@ -1,5 +1,6 @@
 import { createSignal, createContext, useContext, JSX } from "solid-js";
 import { CustomWindow } from "../config/types";
+import { ChatInfoType } from "../components/global/modal/chatModal";
 
 // Define the type for your app data
 export type AppData = {
@@ -11,6 +12,16 @@ export type AppData = {
   isAuthenticated: boolean;
   isOpenLoading: boolean;
   isOpenNotificationsModal: boolean;
+  friendDetailsModalState: {
+    isOpen: boolean;
+    username: string;
+    userId: string;
+  };
+  chatModalState: {
+    isOpen: boolean;
+    friendId: string;
+  };
+  chatInfo: ChatInfoType;
 };
 
 export type UserData = {
@@ -71,6 +82,25 @@ export function AppProvider(props: { children: JSX.Element }) {
       customWindow.appData.authenticated === "true" ? true : false,
     isOpenLoading: false,
     isOpenNotificationsModal: false,
+    friendDetailsModalState: {
+      isOpen: false,
+      username: "",
+      userId: "",
+    },
+    chatModalState: {
+      isOpen: false,
+      friendId: "",
+    },
+    chatInfo: {
+      chatId: "",
+      friend: {
+        username: "",
+      },
+      user: {
+        username: "",
+      },
+      messages: [],
+    },
   });
 
   const [userData, setUserData] = createSignal({

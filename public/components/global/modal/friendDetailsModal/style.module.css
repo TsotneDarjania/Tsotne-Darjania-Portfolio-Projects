@@ -1,0 +1,88 @@
+.friendDetailsModal {
+  position: fixed;
+
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 600px;
+  height: 200px;
+
+  padding: 30px 20px 30px 20px;
+
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+
+  background-color: rgb(238, 238, 238);
+
+  display: flex;
+  justify-content: start;
+  align-items: start;
+
+  flex-direction: column;
+
+  z-index: 40;
+  transform: scale(0);
+  opacity: 0;
+
+  border-radius: 10px;
+
+  animation-name: show;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.title {
+  font-size: 2rem;
+  color: rgb(61, 56, 52);
+}
+
+.username {
+  font-size: 1.4rem;
+  color: rgb(61, 56, 52);
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 10px;
+}
+
+.removeButton {
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  background-color: rgb(124, 39, 39);
+
+  padding: 7px;
+
+  border-radius: 20px;
+
+  border: 7px double wheat;
+
+  height: min-content;
+
+  transition: all 0.3s;
+}
+.removeButton:hover {
+  background-color: rgb(248, 130, 130);
+  color: rgb(39, 34, 31);
+}

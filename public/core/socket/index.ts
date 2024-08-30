@@ -1,6 +1,7 @@
 import { DefaultEventsMap } from "@socket.io/component-emitter";
 import { io, Socket } from "socket.io-client";
 import {
+  getChatInfo,
   updateFriendsList,
   updateFriendSuggestions,
   updateNotifications,
@@ -76,6 +77,51 @@ export function initSocketConnection(
       }
     }
   });
+
+  socket.on("someone-remove-friend", async (data) => {
+    if (data.friendId === userId) {
+      const response = await updateFriendsList(userId);
+      if (response !== 500) {
+        setUserData((prev) => {
+          return {
+            ...prev,
+            friends: response.friends,
+          };
+        });
+      }
+
+      const friendSuggestionsResponse = await updateFriendSuggestions(userId);
+      if (friendSuggestionsResponse !== 500) {
+        setAppData((prev) => {
+          return {
+            ...prev,
+            friendSuggestions: friendSuggestionsResponse.frienSuggestions,
+          };
+        });
+      }
+    }
+  });
+
+  socket.on("update-messages", async (data) => {
+    if (data.friendId === userId) {
+      getChatInfo(data.userId, data.friendId).then((res) => {
+        setAppData((prev) => {
+          return {
+            ...prev,
+            chatInfo: res,
+          };
+        });
+
+        const chatBox = document.getElementById("chat_box");
+        if (chatBox) {
+          chatBox.scrollTo({
+            top: chatBox.scrollHeight,
+            behavior: "smooth",
+          });
+        }
+      });
+    }
+  });
 }
 
 export function makeFriendSuggestionEvent(
@@ -105,5 +151,19 @@ export function acceptFriendRequestEvent(
   socket.emit("accept-friend-request", {
     senderId,
     recipientId,
+  });
+}
+
+export function removeFriendEvent(userId: string, friendId: string) {
+  socket.emit("remove-friend", {
+    userId,
+    friendId,
+  });
+}
+
+export function updateMessages(userId: string, friendId: string) {
+  socket.emit("update-messages", {
+    userId,
+    friendId,
   });
 }

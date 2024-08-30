@@ -16,6 +16,7 @@ import {
 import Notification from "../models/notification";
 import { Request, Response } from "express";
 import User from "../models/user";
+import Message from "../models/messages";
 
 const apiRouter = Router();
 
@@ -86,5 +87,57 @@ apiRouter.post(
     }
   }
 );
+
+apiRouter.post(
+  "/api/friends/deletefriend",
+  async (req: Request, res: Response) => {
+    const { userId, friendId } = req.body;
+
+    try {
+      await User.updateOne({ _id: userId }, { $pull: { friends: friendId } });
+      await User.updateOne({ _id: friendId }, { $pull: { friends: userId } });
+
+      res.status(200).json({ message: "Friend deleted" });
+    } catch (error) {
+      console.log("ERRROR DURING FRIEND DELETE", error);
+      res.status(500).json({ error });
+    }
+  }
+);
+
+// Get Chat Information
+apiRouter.post("/api/chat/getchatinfo", async (req: Request, res: Response) => {
+  const { userId, friendId } = req.body;
+
+  try {
+    const user = await getUserById(userId);
+    const friend = await getUserById(friendId);
+
+    const messages = await Message.find({
+      $or: [
+        { "sender.id": userId, "recipient.id": friendId },
+        { "sender.id": friendId, "recipient.id": userId },
+      ],
+    }).sort({ timestamp: 1 });
+
+    res.status(200).json({ user, friend, messages });
+  } catch (error) {
+    console.log("ERRROR DURING GET CHAT INFO", error);
+    res.status(500).json({ error });
+  }
+});
+
+// Send Message
+apiRouter.post("/api/chat/sendmessage", async (req: Request, res: Response) => {
+  const { messageData } = req.body;
+
+  try {
+    Message.create(messageData);
+    res.status(200).json({ message: "Message sent" });
+  } catch (error) {
+    console.log("ERRROR DURING SEND MESSAGE", error);
+    res.status(500).json({ error });
+  }
+});
 
 export default apiRouter;

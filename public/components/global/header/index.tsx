@@ -9,7 +9,9 @@ export default function Header() {
     <nav class={style.nav}>
       <div>
         <h1
-          style={{ color: appData().isAuthenticated ? "white" : "wheat" }}
+          style={{
+            color: appData().isAuthenticated ? "rgb(226, 226, 226)" : "wheat",
+          }}
           class={"custom-font-1 " + style.title}
         >
           MeetZone

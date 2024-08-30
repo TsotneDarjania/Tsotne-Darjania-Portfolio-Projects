@@ -27,6 +27,7 @@ io.on("connection", (socket) => {
     const { senderId, recipientId } = data;
     socket.broadcast.emit("cancel-friend-request", {
       recipientId,
+      senderId,
     });
   });
 
@@ -34,6 +35,23 @@ io.on("connection", (socket) => {
     const { senderId, recipientId } = data;
     socket.broadcast.emit("update-friends", {
       senderId,
+      recipientId,
+    });
+  });
+
+  socket.on("remove-friend", (data) => {
+    const { userId, friendId } = data;
+    socket.broadcast.emit("someone-remove-friend", {
+      userId,
+      friendId,
+    });
+  });
+
+  socket.on("update-messages", (data) => {
+    const { userId, friendId } = data;
+    socket.broadcast.emit("update-messages", {
+      userId,
+      friendId,
     });
   });
 });

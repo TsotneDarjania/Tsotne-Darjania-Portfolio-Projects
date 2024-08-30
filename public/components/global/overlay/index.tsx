@@ -11,6 +11,15 @@ export function Overlay() {
           ...prev,
           isOpenAuthenticatioModal: { isOpen: false, type: undefined },
           isOpenNotificationsModal: false,
+          friendDetailsModalState: {
+            isOpen: false,
+            username: "",
+            userId: "",
+          },
+          chatModalState: {
+            isOpen: false,
+            friendId: "",
+          },
         }));
       }}
       class={style.overlay}

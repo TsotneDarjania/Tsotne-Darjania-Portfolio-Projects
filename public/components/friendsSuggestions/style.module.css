@@ -21,5 +21,6 @@
   margin-top: 10px;
   height: 24vh;
 
+  color: rgb(226, 226, 226);
   overflow-y: scroll;
 }

@@ -65,3 +65,73 @@ export async function updateFriendSuggestions(userId: string) {
       return res;
     });
 }
+
+export async function deleteFriend(userId: string, friendId: string) {
+  return fetch("/api/friends/deletefriend", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      userId,
+      friendId,
+    }),
+  }).then((res) => {
+    if (res.status === 200) {
+      return 200;
+    } else {
+      return 500;
+    }
+  });
+}
+
+export async function getChatInfo(userId: string, friendId: string) {
+  return fetch("/api/chat/getchatinfo", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      userId,
+      friendId,
+    }),
+  })
+    .then((res) => {
+      if (res.status === 200) {
+        return res.json();
+      } else {
+        return 500;
+      }
+    })
+    .then((res) => {
+      return res;
+    });
+}
+
+export function sendMessage(messageData: {
+  sender: {
+    id: string;
+    username: string;
+  };
+  recipient: {
+    id: string;
+    username: string;
+  };
+  message: string;
+}) {
+  return fetch("/api/chat/sendmessage", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      messageData,
+    }),
+  }).then((res) => {
+    if (res.status === 200) {
+      return 200;
+    } else {
+      return 500;
+    }
+  });
+}
