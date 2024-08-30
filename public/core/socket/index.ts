@@ -2,6 +2,7 @@ import { DefaultEventsMap } from "@socket.io/component-emitter";
 import { io, Socket } from "socket.io-client";
 import {
   getChatInfo,
+  getPosts,
   updateFriendsList,
   updateFriendSuggestions,
   updateNotifications,
@@ -17,13 +18,19 @@ export function initSocketConnection(
   ) => void,
   setAppData: (value: Partial<AppData> | ((prev: AppData) => AppData)) => void
 ) {
+  console.log("initSocketConnection");
   socket = io("http://localhost:3000", {
     query: { userId },
   });
 
-  socket.on("connect", () => {});
-
-  socket.on("disconnect", () => {});
+  socket.on("update-active-users", (data) => {
+    setAppData((prev) => {
+      return {
+        ...prev,
+        aciveUsers: data,
+      };
+    });
+  });
 
   socket.on("get-friend-suggestion", async (data) => {
     if (data.recipientId === userId) {
@@ -122,6 +129,19 @@ export function initSocketConnection(
       });
     }
   });
+
+  socket.on("update-posts", () => {
+    getPosts().then((res) => {
+      if (res === 500) {
+        alert("Something went wrong");
+      } else {
+        setAppData((prev) => ({
+          ...prev,
+          posts: res.posts,
+        }));
+      }
+    });
+  });
 }
 
 export function makeFriendSuggestionEvent(
@@ -166,4 +186,8 @@ export function updateMessages(userId: string, friendId: string) {
     userId,
     friendId,
   });
+}
+
+export function updatePosts() {
+  socket.emit("update-posts");
 }

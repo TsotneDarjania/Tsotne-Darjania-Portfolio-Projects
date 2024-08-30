@@ -22,6 +22,16 @@ export type AppData = {
     friendId: string;
   };
   chatInfo: ChatInfoType;
+  posts: {
+    userId: string;
+    createdAt: string;
+    post: {
+      username: string;
+      title: string;
+      content: string;
+    };
+  }[];
+  aciveUsers: string[];
 };
 
 export type UserData = {
@@ -101,6 +111,8 @@ export function AppProvider(props: { children: JSX.Element }) {
       },
       messages: [],
     },
+    posts: [],
+    aciveUsers: [],
   });
 
   const [userData, setUserData] = createSignal({

@@ -7,27 +7,191 @@
 
   width: 80vw;
 
-  background-color: rgb(255, 255, 253);
+  background-color: rgb(26, 24, 24);
 
   overflow-y: scroll;
 }
 
 /* width */
-/* .newsFeed::-webkit-scrollbar {
-  width: 14px;
-} */
+::-webkit-scrollbar {
+  width: 8px;
+}
 
 /* Track */
-/* .newsFeed::-webkit-scrollbar-track {
-  background: #aa9a8b;
-} */
+::-webkit-scrollbar-track {
+  background: #38312a;
+}
 
 /* Handle */
-/* .newsFeed::-webkit-scrollbar-thumb {
-  background: #5f554a;
-} */
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+}
 
 /* Handle on hover */
-/* .newsFeed::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background: #f8f8f8;
-} */
+}
+
+.indicators {
+  position: fixed;
+  right: 20px;
+
+  z-index: 10;
+}
+
+.createPostButton {
+  position: fixed;
+  right: 22vw;
+  bottom: 20px;
+
+  width: 200px;
+  height: 50px;
+
+  background-color: rgb(56, 54, 49);
+  border: 7px double rgb(90, 73, 31);
+
+  border-radius: 5px;
+
+  color: white;
+  font-size: 1.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  transition: all 0.3s;
+}
+.createPostButton:hover {
+  background-color: rgb(90, 73, 31);
+}
+
+.createPostModal {
+  position: fixed;
+  right: 22vw;
+  bottom: 20px;
+
+  width: 50vw;
+  height: 0vh;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  border-radius: 10px;
+
+  z-index: 40;
+
+  animation-name: show;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+@keyframes show {
+  0% {
+    opacity: 0;
+    height: 0vh;
+  }
+  100% {
+    opacity: 1;
+    height: 50vh;
+  }
+}
+
+.title {
+  font-size: 2rem;
+  color: #38312a;
+  background-color: #38312a;
+
+  border: none;
+  width: 100%;
+
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(255, 250, 245);
+}
+
+.textarea {
+  resize: none;
+  width: 100%;
+  height: 30vh;
+  padding: 10px;
+
+  border: none;
+  border-radius: 10px;
+
+  font-size: 1.8rem;
+  color: #38312a;
+
+  background-color: rgb(255, 250, 245);
+}
+
+.createPostSubmitButton {
+  width: 100%;
+  height: 50px;
+
+  background-color: rgb(56, 54, 49);
+  border: 7px double rgb(90, 73, 31);
+
+  border-radius: 5px;
+
+  color: white;
+  font-size: 1.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  transition: all 0.3s;
+}
+.createPostSubmitButton:hover {
+  background-color: rgb(90, 73, 31);
+}
+
+.closeIcon {
+  position: absolute;
+  right: -6px;
+  top: -60px;
+
+  width: 50px;
+  height: 50px;
+
+  font-size: 2rem;
+
+  cursor: pointer;
+}
+
+.posts {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  padding: 30px 40px;
+}
+
+.postAuthor {
+  font-size: 1.8rem;
+  color: rgb(141, 137, 134);
+  font-weight: bolder;
+
+  text-decoration: underline;
+}
+
+.postTitle {
+  font-size: 2.5rem;
+  color: rgb(255, 255, 255);
+}
+
+.postContent {
+  font-size: 2rem;
+  color: rgb(233, 233, 233);
+}
+
+.postDate {
+  font-size: 0.8rem;
+  color: rgb(141, 137, 134);
+  margin-top: 3px;
+}

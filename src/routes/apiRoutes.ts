@@ -17,6 +17,7 @@ import Notification from "../models/notification";
 import { Request, Response } from "express";
 import User from "../models/user";
 import Message from "../models/messages";
+import Post from "../models/posts";
 
 const apiRouter = Router();
 
@@ -136,6 +137,34 @@ apiRouter.post("/api/chat/sendmessage", async (req: Request, res: Response) => {
     res.status(200).json({ message: "Message sent" });
   } catch (error) {
     console.log("ERRROR DURING SEND MESSAGE", error);
+    res.status(500).json({ error });
+  }
+});
+
+// Upload Post
+apiRouter.post("/api/post/upload", async (req: Request, res: Response) => {
+  const { userId, post } = req.body;
+
+  try {
+    await Post.create({
+      userId,
+      post,
+    });
+    res.status(200).json({ message: "Post uploaded" });
+  } catch (error) {
+    console.log("ERRROR DURING UPLOAD POST", error);
+    res.status(500).json({ error });
+  }
+});
+
+// Get Posts
+apiRouter.post("/api/post/getposts", async (req: Request, res: Response) => {
+  try {
+    const posts = await (await Post.find().sort({ timestamp: 1 })).reverse();
+
+    res.status(200).json({ posts });
+  } catch (error) {
+    console.log("ERRROR DURING GET POSTS", error);
     res.status(500).json({ error });
   }
 });

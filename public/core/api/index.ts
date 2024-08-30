@@ -135,3 +135,48 @@ export function sendMessage(messageData: {
     }
   });
 }
+
+export async function uploadPost(
+  userId: string,
+  post: {
+    username: string;
+    title: string;
+    content: string;
+  }
+) {
+  return fetch("/api/post/upload", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      userId: userId,
+      post: post,
+    }),
+  }).then((res) => {
+    if (res.status === 200) {
+      return 200;
+    } else {
+      return 500;
+    }
+  });
+}
+
+export async function getPosts() {
+  return fetch("/api/post/getposts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => {
+      if (res.status === 200) {
+        return res.json();
+      } else {
+        return 500;
+      }
+    })
+    .then((res) => {
+      return res;
+    });
+}

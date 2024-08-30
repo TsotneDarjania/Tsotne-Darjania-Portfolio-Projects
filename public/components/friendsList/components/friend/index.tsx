@@ -6,12 +6,16 @@ export default function Friend({
 }: {
   user: { username: string; id: string };
 }) {
-  const { setAppData } = useApp();
+  const { appData, setAppData } = useApp();
 
   return (
     <div class={style.row}>
       <div class={style.nameEndIndicator}>
-        <div class={style.activeIndicator}></div>
+        {appData().aciveUsers?.includes(user.id) ? (
+          <div class={style.activeIndicator}></div>
+        ) : (
+          <div class={style.deactiveIndicator}></div>
+        )}
         <p
           onclick={() => {
             setAppData((prev) => {

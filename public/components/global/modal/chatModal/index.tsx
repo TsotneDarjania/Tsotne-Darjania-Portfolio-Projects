@@ -4,7 +4,7 @@ import { useApp } from "../../../../store/AppCotext";
 import style from "./style.module.css";
 import { updateMessages } from "../../../../core/socket";
 
-function formatDate(timestamp: string): string {
+export function formatDate(timestamp: string): string {
   const date = new Date(timestamp);
 
   // Format the date components
@@ -136,6 +136,7 @@ export function ChatModal({ friendId }: { friendId: string }) {
       </div>
       <div class={style.inputBox}>
         <textarea
+          maxLength={1200}
           value={message()} // Bind the textarea value to the signal
           onInput={(event) => setMessage(event.currentTarget.value)} // Update the signal on input
           onKeyUp={(event) => {

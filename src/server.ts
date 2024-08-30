@@ -13,8 +13,20 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
+const activeUsers: string[] = [];
+
 io.on("connection", (socket) => {
-  const userId = socket.handshake.query.userId;
+  const userId = socket.handshake.query.userId! as string;
+  activeUsers.push(userId);
+
+  io.emit("update-active-users", activeUsers);
+
+  socket.on("disconnect", () => {
+    const index = activeUsers.indexOf(userId);
+    activeUsers.splice(index, 1);
+
+    io.emit("update-active-users", activeUsers);
+  });
 
   socket.on("make-friend-suggestion", (data) => {
     const { senderId, recipientId } = data;
@@ -53,6 +65,10 @@ io.on("connection", (socket) => {
       userId,
       friendId,
     });
+  });
+
+  socket.on("update-posts", () => {
+    socket.broadcast.emit("update-posts");
   });
 });
 

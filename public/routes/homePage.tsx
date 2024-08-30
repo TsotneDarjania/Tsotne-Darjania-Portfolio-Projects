@@ -21,11 +21,9 @@ export function HomePage() {
     return -delay;
   };
 
-  createEffect(() => {
-    if (appData().isAuthenticated) {
-      initSocketConnection(userData().userId, setUserData, setAppData);
-    }
-  });
+  if (appData().isAuthenticated) {
+    initSocketConnection(userData().userId, setUserData, setAppData);
+  }
 
   return (
     <>

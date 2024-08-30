@@ -21,6 +21,12 @@
   margin-top: 10px;
   height: 24vh;
 
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  padding-right: 10px;
+
   color: rgb(226, 226, 226);
   overflow-y: scroll;
 }
