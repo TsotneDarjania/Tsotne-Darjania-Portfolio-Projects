@@ -1,5 +1,4 @@
 import { compareSync } from "bcryptjs";
-import { DOMElements } from "../../config/dom";
 
 export async function userRegister(
   username: string,

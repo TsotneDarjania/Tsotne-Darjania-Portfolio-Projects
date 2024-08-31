@@ -20,7 +20,7 @@ body {
   width: 100vw;
   height: 100vh;
 
-  background-image: url("static/img/bck.jpg");
+  background-image: url("../static/img/meetZone/bck.jpg");
   background-size: 150%;
 
   animation-name: bck-image-anim;

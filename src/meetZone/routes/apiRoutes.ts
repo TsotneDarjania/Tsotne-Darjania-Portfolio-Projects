@@ -19,35 +19,45 @@ import User from "../models/user";
 import Message from "../models/messages";
 import Post from "../models/posts";
 
-const apiRouter = Router();
+const meetZoneApiRouter = Router();
 
 // Register a new user
-apiRouter.post(
+meetZoneApiRouter.post(
   "/meetzone/api/user/register",
   regValidationMiddleware,
   registration
 );
 
 // Log in the user
-apiRouter.post("/meetzone/api/user/login", loginValidationMiddleware, login);
+meetZoneApiRouter.post(
+  "/meetzone/api/user/login",
+  loginValidationMiddleware,
+  login
+);
 
 // Log out the user
-apiRouter.post("/api/user/logout", logOut);
+meetZoneApiRouter.post("/meetzone/api/user/logout", logOut);
 
 // Send Friend Request
-apiRouter.post("/meetzone/api/friends/sendrequest", sendFriendRequest);
+meetZoneApiRouter.post("/meetzone/api/friends/sendrequest", sendFriendRequest);
 
 // Cancel Friend Request
-apiRouter.post("/meetzone/api/friends/canselrequest", cancelFriendRequest);
+meetZoneApiRouter.post(
+  "/meetzone/api/friends/canselrequest",
+  cancelFriendRequest
+);
 
 // Accept Friend Request
-apiRouter.post("/meetzone/api/friends/acceptrequest", acceptFriendRequest);
+meetZoneApiRouter.post(
+  "/meetzone/api/friends/acceptrequest",
+  acceptFriendRequest
+);
 
 // get friendList
-apiRouter.post("/meetzone/api/friends/friendList", getFriendsList);
+meetZoneApiRouter.post("/meetzone/api/friends/friendList", getFriendsList);
 
 //UpdateRecivedNotification
-apiRouter.post(
+meetZoneApiRouter.post(
   "/meetzone/api/friends/updaterecivednotification",
   async (req: Request, res: Response) => {
     const userId = req.body.userId;
@@ -64,7 +74,7 @@ apiRouter.post(
 );
 
 //Update Friends Sugguestions
-apiRouter.post(
+meetZoneApiRouter.post(
   "/meetzone/api/friends/updatefriendsuggestions",
   async (req: Request, res: Response) => {
     const userId = req.body.userId;
@@ -93,7 +103,7 @@ apiRouter.post(
   }
 );
 
-apiRouter.post(
+meetZoneApiRouter.post(
   "/meetzone/api/friends/deletefriend",
   async (req: Request, res: Response) => {
     const { userId, friendId } = req.body;
@@ -111,7 +121,7 @@ apiRouter.post(
 );
 
 // Get Chat Information
-apiRouter.post(
+meetZoneApiRouter.post(
   "/meetzone/api/chat/getchatinfo",
   async (req: Request, res: Response) => {
     const { userId, friendId } = req.body;
@@ -136,7 +146,7 @@ apiRouter.post(
 );
 
 // Send Message
-apiRouter.post(
+meetZoneApiRouter.post(
   "/meetzone/api/chat/sendmessage",
   async (req: Request, res: Response) => {
     const { messageData } = req.body;
@@ -152,7 +162,7 @@ apiRouter.post(
 );
 
 // Upload Post
-apiRouter.post(
+meetZoneApiRouter.post(
   "/meetzone/api/post/upload",
   async (req: Request, res: Response) => {
     const { userId, post } = req.body;
@@ -171,7 +181,7 @@ apiRouter.post(
 );
 
 // Get Posts
-apiRouter.post(
+meetZoneApiRouter.post(
   "/meetzone/api/post/getposts",
   async (req: Request, res: Response) => {
     try {
@@ -186,7 +196,7 @@ apiRouter.post(
 );
 
 // Delete Account
-apiRouter.post(
+meetZoneApiRouter.post(
   "/meetzone/api/user/delete",
   async (req: Request, res: Response) => {
     const { userId } = req.body;
@@ -211,4 +221,4 @@ apiRouter.post(
   }
 );
 
-export default apiRouter;
+export default meetZoneApiRouter;

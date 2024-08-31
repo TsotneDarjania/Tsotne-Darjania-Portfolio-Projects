@@ -28,10 +28,10 @@ export default function Header() {
               </p>
               <img
                 class={style.logOutIcon}
-                src={"static/img/log-out.png"}
+                src={"../static/img/meetZone/log-out.png"}
                 alt="user"
                 onclick={() => {
-                  fetch("/api/user/logout", {
+                  fetch("/meetzone/api/user/logout", {
                     method: "POST",
                   }).then((res) => {
                     if (res.status === 200) {
@@ -44,7 +44,7 @@ export default function Header() {
               />
               <img
                 class={style.menuIcon}
-                src={"static/img/menu.svg"}
+                src={"../static/img/meetZone/menu.svg"}
                 alt="user"
                 onclick={() => {
                   setAppData((prev) => ({
@@ -56,7 +56,7 @@ export default function Header() {
 
               <img
                 class={style.notificationsIcon}
-                src={"static/img/notification-icon.png"}
+                src={"../static/img/meetZone/notification-icon.png"}
                 alt="user"
                 onclick={() => {
                   setAppData((prev) => ({

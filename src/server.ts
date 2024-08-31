@@ -1,13 +1,14 @@
 import express from "express";
 import { PORT } from "./config";
-import pageRouter from "./routes/pageRouter";
-import apiRouter from "./routes/apiRoutes";
 import bodyparser from "body-parser";
 import session from "express-session";
-import { connectDB } from "./services/mongoDB";
+import { connectDB } from "./meetZone/services/mongoDB";
 import MongoStore from "connect-mongo";
 import { Server } from "socket.io";
 import http from "http";
+import meetZonePageRouter from "./meetZone/routes/pageRouter";
+import meetZoneApiRouter from "./meetZone/routes/apiRoutes";
+import portfolioPageRouter from "./portfolio/routes/pageRouter";
 
 const app = express();
 const server = http.createServer(app);
@@ -97,8 +98,9 @@ app.set("views", "public");
 app.use(express.static("public"));
 app.use(bodyparser.json());
 
-app.use(pageRouter);
-app.use(apiRouter);
+app.use(meetZonePageRouter);
+app.use(meetZoneApiRouter);
+app.use(portfolioPageRouter);
 
 export function startServer() {
   server.listen(PORT, () => {

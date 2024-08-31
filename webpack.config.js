@@ -1,10 +1,17 @@
-import path, { resolve } from "path";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default {
-  entry: "./public/index.tsx", // Your entry point file
+  entry: {
+    meetZone: "./public/meetZone/index.tsx",
+    portfolio: "./public/portfolio/index.tsx",
+  },
   output: {
-    filename: "bundle.js", // The output file name
-    path: path.resolve("public"), // Output directory set to your existing 'public' folder
+    filename: "[name]Bundle.js", // Generates meetZoneBundle.js and portfolioBundle.js
+    path: path.resolve(__dirname, "public/build"), // Outputs to respective folders
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"], // File extensions to support

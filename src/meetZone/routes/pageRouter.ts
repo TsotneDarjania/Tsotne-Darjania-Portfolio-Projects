@@ -4,9 +4,9 @@ import { isAuthenticated } from "../middlewares/isAuthenticated";
 import User from "../models/user";
 import Notification from "../models/notification";
 
-const pageRouter = Router();
+const meetZonePageRouter = Router();
 
-pageRouter.get("/meetzone", async (req, res) => {
+meetZonePageRouter.get("/meetzone", async (req, res) => {
   const session = req.session as SessionRequest;
   const user = await getUserById(session.userId!);
 
@@ -31,7 +31,7 @@ pageRouter.get("/meetzone", async (req, res) => {
     "recipient.id": session.userId,
   }).lean();
 
-  res.render("index", {
+  res.render("meetZone/index", {
     authenticated: isAuthenticated(req),
     username: user?.username,
     userId: session.userId,
@@ -41,4 +41,4 @@ pageRouter.get("/meetzone", async (req, res) => {
   });
 });
 
-export default pageRouter;
+export default meetZonePageRouter;
