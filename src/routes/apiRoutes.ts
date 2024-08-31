@@ -22,29 +22,33 @@ import Post from "../models/posts";
 const apiRouter = Router();
 
 // Register a new user
-apiRouter.post("/api/user/register", regValidationMiddleware, registration);
+apiRouter.post(
+  "/meetzone/api/user/register",
+  regValidationMiddleware,
+  registration
+);
 
 // Log in the user
-apiRouter.post("/api/user/login", loginValidationMiddleware, login);
+apiRouter.post("/meetzone/api/user/login", loginValidationMiddleware, login);
 
 // Log out the user
 apiRouter.post("/api/user/logout", logOut);
 
 // Send Friend Request
-apiRouter.post("/api/friends/sendrequest", sendFriendRequest);
+apiRouter.post("/meetzone/api/friends/sendrequest", sendFriendRequest);
 
 // Cancel Friend Request
-apiRouter.post("/api/friends/canselrequest", cancelFriendRequest);
+apiRouter.post("/meetzone/api/friends/canselrequest", cancelFriendRequest);
 
 // Accept Friend Request
-apiRouter.post("/api/friends/acceptrequest", acceptFriendRequest);
+apiRouter.post("/meetzone/api/friends/acceptrequest", acceptFriendRequest);
 
 // get friendList
-apiRouter.post("/api/friends/friendList", getFriendsList);
+apiRouter.post("/meetzone/api/friends/friendList", getFriendsList);
 
 //UpdateRecivedNotification
 apiRouter.post(
-  "/api/friends/updaterecivednotification",
+  "/meetzone/api/friends/updaterecivednotification",
   async (req: Request, res: Response) => {
     const userId = req.body.userId;
 
@@ -61,7 +65,7 @@ apiRouter.post(
 
 //Update Friends Sugguestions
 apiRouter.post(
-  "/api/friends/updatefriendsuggestions",
+  "/meetzone/api/friends/updatefriendsuggestions",
   async (req: Request, res: Response) => {
     const userId = req.body.userId;
 
@@ -90,7 +94,7 @@ apiRouter.post(
 );
 
 apiRouter.post(
-  "/api/friends/deletefriend",
+  "/meetzone/api/friends/deletefriend",
   async (req: Request, res: Response) => {
     const { userId, friendId } = req.body;
 
@@ -107,66 +111,104 @@ apiRouter.post(
 );
 
 // Get Chat Information
-apiRouter.post("/api/chat/getchatinfo", async (req: Request, res: Response) => {
-  const { userId, friendId } = req.body;
+apiRouter.post(
+  "/meetzone/api/chat/getchatinfo",
+  async (req: Request, res: Response) => {
+    const { userId, friendId } = req.body;
 
-  try {
-    const user = await getUserById(userId);
-    const friend = await getUserById(friendId);
+    try {
+      const user = await getUserById(userId);
+      const friend = await getUserById(friendId);
 
-    const messages = await Message.find({
-      $or: [
-        { "sender.id": userId, "recipient.id": friendId },
-        { "sender.id": friendId, "recipient.id": userId },
-      ],
-    }).sort({ timestamp: 1 });
+      const messages = await Message.find({
+        $or: [
+          { "sender.id": userId, "recipient.id": friendId },
+          { "sender.id": friendId, "recipient.id": userId },
+        ],
+      }).sort({ timestamp: 1 });
 
-    res.status(200).json({ user, friend, messages });
-  } catch (error) {
-    console.log("ERRROR DURING GET CHAT INFO", error);
-    res.status(500).json({ error });
+      res.status(200).json({ user, friend, messages });
+    } catch (error) {
+      console.log("ERRROR DURING GET CHAT INFO", error);
+      res.status(500).json({ error });
+    }
   }
-});
+);
 
 // Send Message
-apiRouter.post("/api/chat/sendmessage", async (req: Request, res: Response) => {
-  const { messageData } = req.body;
+apiRouter.post(
+  "/meetzone/api/chat/sendmessage",
+  async (req: Request, res: Response) => {
+    const { messageData } = req.body;
 
-  try {
-    Message.create(messageData);
-    res.status(200).json({ message: "Message sent" });
-  } catch (error) {
-    console.log("ERRROR DURING SEND MESSAGE", error);
-    res.status(500).json({ error });
+    try {
+      Message.create(messageData);
+      res.status(200).json({ message: "Message sent" });
+    } catch (error) {
+      console.log("ERRROR DURING SEND MESSAGE", error);
+      res.status(500).json({ error });
+    }
   }
-});
+);
 
 // Upload Post
-apiRouter.post("/api/post/upload", async (req: Request, res: Response) => {
-  const { userId, post } = req.body;
+apiRouter.post(
+  "/meetzone/api/post/upload",
+  async (req: Request, res: Response) => {
+    const { userId, post } = req.body;
 
-  try {
-    await Post.create({
-      userId,
-      post,
-    });
-    res.status(200).json({ message: "Post uploaded" });
-  } catch (error) {
-    console.log("ERRROR DURING UPLOAD POST", error);
-    res.status(500).json({ error });
+    try {
+      await Post.create({
+        userId,
+        post,
+      });
+      res.status(200).json({ message: "Post uploaded" });
+    } catch (error) {
+      console.log("ERRROR DURING UPLOAD POST", error);
+      res.status(500).json({ error });
+    }
   }
-});
+);
 
 // Get Posts
-apiRouter.post("/api/post/getposts", async (req: Request, res: Response) => {
-  try {
-    const posts = await (await Post.find().sort({ timestamp: 1 })).reverse();
+apiRouter.post(
+  "/meetzone/api/post/getposts",
+  async (req: Request, res: Response) => {
+    try {
+      const posts = await (await Post.find().sort({ timestamp: 1 })).reverse();
 
-    res.status(200).json({ posts });
-  } catch (error) {
-    console.log("ERRROR DURING GET POSTS", error);
-    res.status(500).json({ error });
+      res.status(200).json({ posts });
+    } catch (error) {
+      console.log("ERRROR DURING GET POSTS", error);
+      res.status(500).json({ error });
+    }
   }
-});
+);
+
+// Delete Account
+apiRouter.post(
+  "/meetzone/api/user/delete",
+  async (req: Request, res: Response) => {
+    const { userId } = req.body;
+
+    try {
+      await User.deleteOne({ _id: userId });
+      await Post.deleteMany({ userId });
+      await Message.deleteMany({
+        $or: [{ "sender.id": userId }, { "recipient.id": userId }],
+      });
+      await Notification.deleteMany({
+        $or: [{ "sender.id": userId }, { "recipient.id": userId }],
+      });
+
+      req.session.destroy(() => {
+        res.clearCookie("sid").status(200).json({ message: "Account deleted" });
+      });
+    } catch (error) {
+      console.log("ERRROR DURING DELETE ACCOUNT", error);
+      res.status(500).json({ error });
+    }
+  }
+);
 
 export default apiRouter;

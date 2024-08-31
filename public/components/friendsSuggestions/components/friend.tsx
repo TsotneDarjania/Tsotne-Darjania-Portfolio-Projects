@@ -24,7 +24,7 @@ export default function Friend({
   });
 
   function cancelFriendRequest() {
-    return fetch("/api/friends/canselrequest", {
+    return fetch("/meetzone/api/friends/canselrequest", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ export default function Friend({
   }
 
   async function sendFriendRequest() {
-    return fetch("/api/friends/sendrequest", {
+    return fetch("/meetzone/api/friends/sendrequest", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

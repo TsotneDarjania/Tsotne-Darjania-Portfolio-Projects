@@ -20,6 +20,7 @@ export function Overlay() {
             isOpen: false,
             friendId: "",
           },
+          showSettings: false,
         }));
       }}
       class={style.overlay}

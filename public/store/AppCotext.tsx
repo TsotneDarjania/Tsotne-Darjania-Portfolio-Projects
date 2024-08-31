@@ -32,6 +32,7 @@ export type AppData = {
     };
   }[];
   aciveUsers: string[];
+  showSettings: boolean;
 };
 
 export type UserData = {
@@ -113,6 +114,7 @@ export function AppProvider(props: { children: JSX.Element }) {
     },
     posts: [],
     aciveUsers: [],
+    showSettings: false,
   });
 
   const [userData, setUserData] = createSignal({

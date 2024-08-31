@@ -6,7 +6,7 @@ import Notification from "../models/notification";
 
 const pageRouter = Router();
 
-pageRouter.get("/", async (req, res) => {
+pageRouter.get("/meetzone", async (req, res) => {
   const session = req.session as SessionRequest;
   const user = await getUserById(session.userId!);
 
@@ -16,7 +16,6 @@ pageRouter.get("/", async (req, res) => {
     { username: 1, friends: 1 }
   )
     .sort({ _id: -1 })
-    .limit(5)
     .lean(); // Using .lean() for better performance
 
   const frienSuggestions = users.filter((suggestionUser) => {

@@ -6,7 +6,7 @@ export async function userRegister(
   email: string,
   password: string
 ) {
-  return await fetch("http://localhost:3000/api/user/register", {
+  return await fetch("/meetzone/api/user/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export async function userRegister(
 }
 
 export async function userLogin(email: string, password: string) {
-  return await fetch("http://localhost:3000/api/user/login", {
+  return await fetch("/meetzone/api/user/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

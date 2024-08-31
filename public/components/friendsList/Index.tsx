@@ -15,7 +15,7 @@ export default function FriendsList() {
   });
 
   async function getFriendsList() {
-    const response = await fetch("/api/friends/friendList", {
+    const response = await fetch("/meetzone/api/friends/friendList", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

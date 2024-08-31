@@ -1,7 +1,7 @@
 import { Notification, useApp } from "../../store/AppCotext";
 
 export function updateNotifications(userId: string) {
-  return fetch("/api/friends/updaterecivednotification", {
+  return fetch("/meetzone/api/friends/updaterecivednotification", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -23,7 +23,7 @@ export function updateNotifications(userId: string) {
 }
 
 export function updateFriendsList(userId: string) {
-  return fetch("/api/friends/friendList", {
+  return fetch("/meetzone/api/friends/friendList", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -45,7 +45,7 @@ export function updateFriendsList(userId: string) {
 }
 
 export async function updateFriendSuggestions(userId: string) {
-  return fetch("/api/friends/updatefriendsuggestions", {
+  return fetch("/meetzone/api/friends/updatefriendsuggestions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -67,7 +67,7 @@ export async function updateFriendSuggestions(userId: string) {
 }
 
 export async function deleteFriend(userId: string, friendId: string) {
-  return fetch("/api/friends/deletefriend", {
+  return fetch("/meetzone/api/friends/deletefriend", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -86,7 +86,7 @@ export async function deleteFriend(userId: string, friendId: string) {
 }
 
 export async function getChatInfo(userId: string, friendId: string) {
-  return fetch("/api/chat/getchatinfo", {
+  return fetch("/meetzone/api/chat/getchatinfo", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -119,7 +119,7 @@ export function sendMessage(messageData: {
   };
   message: string;
 }) {
-  return fetch("/api/chat/sendmessage", {
+  return fetch("/meetzone/api/chat/sendmessage", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -144,7 +144,7 @@ export async function uploadPost(
     content: string;
   }
 ) {
-  return fetch("/api/post/upload", {
+  return fetch("/meetzone/api/post/upload", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -163,7 +163,7 @@ export async function uploadPost(
 }
 
 export async function getPosts() {
-  return fetch("/api/post/getposts", {
+  return fetch("/meetzone/api/post/getposts", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -179,4 +179,22 @@ export async function getPosts() {
     .then((res) => {
       return res;
     });
+}
+
+export function deleteAccount(userId: string) {
+  return fetch("/meetzone/api/user/delete", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      userId,
+    }),
+  }).then((res) => {
+    if (res.status === 200) {
+      return 200;
+    } else {
+      return 500;
+    }
+  });
 }

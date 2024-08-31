@@ -46,6 +46,12 @@ export default function Header() {
                 class={style.menuIcon}
                 src={"static/img/menu.svg"}
                 alt="user"
+                onclick={() => {
+                  setAppData((prev) => ({
+                    ...prev,
+                    showSettings: true,
+                  }));
+                }}
               />
 
               <img

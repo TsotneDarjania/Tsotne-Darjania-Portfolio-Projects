@@ -6,12 +6,12 @@ import { AuthenticationModal } from "../components/global/modal/authenticationMo
 import { ChatModal } from "../components/global/modal/chatModal";
 import FriendDetailsModal from "../components/global/modal/friendDetailsModal";
 import { NotificationsModal } from "../components/global/modal/notificationModal";
+import Settings from "../components/global/modal/settings/idnex";
 import { NewsFeed } from "../components/global/newsFeed";
 import { Overlay } from "../components/global/overlay";
 import Signature from "../components/signature";
 import { initSocketConnection } from "../core/socket";
 import { useApp } from "../store/AppCotext";
-import { createEffect } from "solid-js";
 
 export function HomePage() {
   const { appData, setAppData, userData, setUserData } = useApp();
@@ -39,6 +39,8 @@ export function HomePage() {
 
       <Header />
       <Signature />
+
+      {appData().showSettings && <Settings />}
 
       {/* Friend Details Modal */}
       {appData().friendDetailsModalState.isOpen && (
@@ -79,6 +81,7 @@ export function HomePage() {
 
       {appData().friendDetailsModalState.isOpen && <Overlay />}
       {appData().chatModalState.isOpen && <Overlay />}
+      {appData().showSettings && <Overlay />}
     </>
   );
 }

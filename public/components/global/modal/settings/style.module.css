@@ -1,0 +1,79 @@
+.settingsModal {
+  position: fixed;
+
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  width: fit-content;
+  height: min-content;
+
+  padding: 30px 20px 30px 20px;
+
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+
+  background-color: rgb(238, 238, 238);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+
+  z-index: 40;
+  transform: scale(0);
+  opacity: 0;
+
+  border-radius: 10px;
+
+  animation-name: show;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(138, 121, 106);
+
+  text-decoration: underline;
+}
+
+.deteleAccountButton {
+  margin-top: 14px;
+
+  font-size: 1.4rem;
+  color: rgb(26, 23, 23);
+  cursor: pointer;
+  background-color: rgb(218, 99, 99);
+
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+
+  border-radius: 5px;
+
+  border: 6px double rgb(90, 73, 31);
+
+  height: min-content;
+
+  transition: all 0.3s;
+}
+.deteleAccountButton:hover {
+  background-color: rgb(218, 48, 48);
+}

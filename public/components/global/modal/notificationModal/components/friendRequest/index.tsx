@@ -10,7 +10,7 @@ export default function FriendRequestRow({
   const { setAppData } = useApp();
 
   async function acceptFriendRequest() {
-    return fetch("/api/friends/acceptrequest", {
+    return fetch("/meetzone/api/friends/acceptrequest", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
