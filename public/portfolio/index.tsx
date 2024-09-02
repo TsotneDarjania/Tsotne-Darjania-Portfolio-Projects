@@ -1,11 +1,10 @@
 import { render } from "solid-js/web";
+import HomePage from "./pages/homepage";
+
+import "./global.css";
 
 const App = () => {
-  return (
-    <div>
-      <h1>Hello, World!</h1>
-    </div>
-  );
+  return <HomePage />;
 };
 
 // Render the component to your root element
