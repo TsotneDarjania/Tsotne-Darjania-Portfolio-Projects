@@ -1,12 +1,12 @@
-export default function ComputerAnimation() {
+export default function ComputerAnimation({ width = 450, height = 550 }) {
   return (
     <svg
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
       viewBox="-50 0 500 458.4"
-      width="450"
-      height="550"
+      width={width}
+      height={height}
     >
       <defs>
         <filter id="f1" x="0" y="0" width="200%" height="200%">

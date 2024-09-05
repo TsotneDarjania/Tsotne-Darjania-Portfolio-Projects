@@ -1,7 +1,50 @@
 .skills {
   width: 100vw;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
 
-  height: 40vh;
+  margin-top: 150px;
+}
 
-  border: 2px solid black;
+.title {
+  font-size: 4rem;
+  font-weight: 600;
+  color: rgb(80, 253, 103);
+  margin: 20px 0;
+}
+@media only screen and (max-width: 900px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  width: 90vw;
+  height: 800px;
+
+  position: relative; /* Important to position .skill elements relative to this container */
+  overflow: hidden; /* Ensure elements don't go outside the container */
+}
+
+.skill {
+  position: absolute; /* This allows the skill to be placed anywhere in the container */
+  background-color: rgb(15, 15, 17);
+  color: rgb(80, 253, 103);
+  font-weight: bold;
+
+  width: fit-content;
+  height: min-content;
+  font-size: 2.3rem;
+  padding: 15px;
+  cursor: grab; /* Change cursor to indicate draggable items */
+
+  border-radius: 10px;
+}
+@media only screen and (max-width: 900px) {
+  .skill {
+    font-size: 1.3rem;
+  }
 }

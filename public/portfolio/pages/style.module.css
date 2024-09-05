@@ -1,9 +1,3 @@
-.homepage {
-  height: 100vh;
-
-  width: 100vw;
-}
-
 .introText {
   position: absolute;
   left: 0;
@@ -26,6 +20,13 @@
   animation-name: introAnim;
   animation-duration: 1s;
   animation-fill-mode: forwards;
+
+  overflow-x: hidden !important;
+}
+@media only screen and (max-width: 900px) {
+  .introText {
+    animation-delay: 2.5s;
+  }
 }
 
 @keyframes introAnim {
@@ -58,6 +59,14 @@
   animation: typing 5s steps(160) forwards,
     blink 0.1s step-end infinite alternate;
 }
+@media only screen and (max-width: 900px) {
+  .animeText1 {
+    font-size: 1.2rem !important;
+
+    animation: typing 1.2s steps(70) forwards,
+      blink 0.1s step-end infinite alternate;
+  }
+}
 
 .animeText2 {
   white-space: nowrap;
@@ -75,6 +84,14 @@
   animation: typing 5s steps(160) forwards,
     blink 0.1s step-end infinite alternate;
 }
+@media only screen and (max-width: 900px) {
+  .animeText2 {
+    font-size: 1.2rem !important;
+
+    animation: typing 1s steps(80) forwards,
+      blink 0.1s step-end infinite alternate;
+  }
+}
 
 @keyframes typing {
   from {
@@ -82,6 +99,16 @@
   }
   to {
     width: 90ch; /* 12 characters wide, adjust based on text length */
+  }
+}
+@media only screen and (max-width: 900px) {
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 20ch; /* 12 characters wide, adjust based on text length */
+    }
   }
 }
 
@@ -127,7 +154,16 @@
   justify-content: space-between;
   align-items: center;
 
+  max-width: 1200px;
+
   padding: 20px 40px;
+}
+@media only screen and (max-width: 900px) {
+  .menuButtonContainer {
+    font-size: 1.6rem;
+
+    flex-direction: column;
+  }
 }
 
 .menuButton {
@@ -143,6 +179,11 @@
 
   border: none;
   transition: all 0.3s;
+}
+@media only screen and (max-width: 900px) {
+  .menuButton {
+    font-size: 1.6rem;
+  }
 }
 .menuButton::after {
   content: "";
@@ -165,10 +206,10 @@
 
 .hero {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
 
-  margin-top: 100px;
+  margin-top: 40px;
 
   width: 90vw;
 
@@ -184,6 +225,11 @@
 
   animation-delay: 5.6s;
 }
+@media only screen and (max-width: 900px) {
+  .hero {
+    animation-delay: 1.6s;
+  }
+}
 
 .computerAnimation {
   position: relative;
@@ -196,7 +242,7 @@
 }
 
 .tsotneImage {
-  width: 400px;
+  width: 100%;
   height: auto;
 
   filter: grayscale(100%);
@@ -205,8 +251,15 @@
 }
 
 .heroText {
-  width: 50%;
+  width: 70%;
 
-  font-size: 1.4rem;
-  color: rgb(81, 88, 79);
+  text-align: center;
+  font-size: 1.6rem;
+  color: rgb(29, 158, 57);
+}
+@media only screen and (max-width: 900px) {
+  .heroText {
+    width: 95%;
+    font-size: 1.2rem;
+  }
 }
