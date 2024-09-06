@@ -73,7 +73,7 @@ export default function Header() {
             </div>
           </>
         ) : (
-          <>
+          <div class={style.authenticationButtons}>
             <button
               onclick={() => {
                 setAppData((prev) => ({
@@ -98,7 +98,7 @@ export default function Header() {
               {" "}
               Login{" "}
             </button>
-          </>
+          </div>
         )}
       </ul>
     </nav>

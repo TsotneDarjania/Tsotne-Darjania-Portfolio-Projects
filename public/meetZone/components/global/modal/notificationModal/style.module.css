@@ -34,6 +34,12 @@
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
+@media only screen and (max-width: 1280px) {
+  .meuModal {
+    padding: 20px 10px 20px 10px;
+  }
+}
+
 @keyframes show {
   0% {
     opacity: 0;
@@ -52,6 +58,11 @@
 
   text-decoration: underline;
 }
+@media only screen and (max-width: 1280px) {
+  .title {
+    font-size: 1.6rem;
+  }
+}
 
 .icon {
   width: 50px;
@@ -66,4 +77,15 @@
   margin-top: 20px;
 
   width: 100%;
+}
+@media only screen and (max-width: 1280px) {
+  .noneNotificationText {
+    font-size: 1.2rem;
+    color: rgb(61, 56, 52);
+
+    text-align: center;
+    margin-top: 20px;
+
+    width: 100%;
+  }
 }

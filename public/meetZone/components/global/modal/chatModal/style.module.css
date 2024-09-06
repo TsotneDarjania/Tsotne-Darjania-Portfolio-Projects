@@ -34,6 +34,14 @@
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
+@media only screen and (max-width: 1280px) {
+  .chatModal {
+    width: 90vw;
+    height: 80vh;
+
+    padding: 10px 20px 30px 10px;
+  }
+}
 @keyframes show {
   0% {
     opacity: 0;
@@ -48,6 +56,11 @@
 .title {
   font-size: 2.1rem;
   color: rgb(73, 66, 61);
+}
+@media only screen and (max-width: 1280px) {
+  .title {
+    text-align: center;
+  }
 }
 
 .chatBox {
@@ -68,6 +81,11 @@
   display: flex;
   align-items: center;
   gap: 0;
+}
+@media only screen and (max-width: 1280px) {
+  .inputBox {
+    margin-top: 10px;
+  }
 }
 
 .textarea {

@@ -1,11 +1,23 @@
 .friendsList {
   position: fixed;
   right: 0px;
-  top: 20vh;
+  top: 22vh;
 
   width: 18vw;
 
   border-top: 3px solid rgb(54, 49, 46);
+}
+@media only screen and (max-width: 1280px) {
+  .friendsList {
+    width: 100vw;
+    padding: 0px 20px;
+    left: 0;
+    right: 0;
+    top: 21vh;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .title {
@@ -20,7 +32,7 @@
   position: relative;
   margin-top: 10px;
   padding-right: 10px;
-  height: 42vh;
+  height: 40vh;
 
   display: flex;
   flex-direction: column;

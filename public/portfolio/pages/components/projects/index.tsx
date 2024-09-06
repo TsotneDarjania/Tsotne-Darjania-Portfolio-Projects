@@ -35,8 +35,21 @@ export function Projects() {
         </div>
         <div class={style.projectIndicators}>
           {/* GitHub Link */}
-          <button class={style.gitHuButton + " custom-font-1"}> GitHub </button>
-          <button class={style.gitHuButton + " custom-font-1"}>
+          <button
+            onclick={() => {
+              window.open("https://github.com/TsotneDarjania/football-manager");
+            }}
+            class={style.gitHuButton + " custom-font-1"}
+          >
+            {" "}
+            GitHub{" "}
+          </button>
+          <button
+            onclick={() => {
+              window.open("https://football-manager-eight.vercel.app/");
+            }}
+            class={style.gitHuButton + " custom-font-1"}
+          >
             {" "}
             Live Link{" "}
           </button>
@@ -71,8 +84,23 @@ export function Projects() {
         </div>
         <div class={style.projectIndicators}>
           {/* GitHub Link */}
-          <button class={style.gitHuButton + " custom-font-1"}> GitHub </button>
-          <button class={style.gitHuButton + " custom-font-1"}>
+          <button
+            onclick={() => {
+              window.open(
+                "https://github.com/TsotneDarjania/Tsotne-Darjania-Portfolio-Projects/tree/master/src/meetZone"
+              );
+            }}
+            class={style.gitHuButton + " custom-font-1"}
+          >
+            {" "}
+            GitHub{" "}
+          </button>
+          <button
+            onclick={() => {
+              window.open("/meetzone");
+            }}
+            class={style.gitHuButton + " custom-font-1"}
+          >
             {" "}
             Live Link{" "}
           </button>
@@ -111,8 +139,21 @@ export function Projects() {
         </div>
         <div class={style.projectIndicators}>
           {/* GitHub Link */}
-          <button class={style.gitHuButton + " custom-font-1"}> GitHub </button>
-          <button class={style.gitHuButton + " custom-font-1"}>
+          <button
+            onclick={() => {
+              window.open("https://github.com/TsotneDarjania/3d-pacman");
+            }}
+            class={style.gitHuButton + " custom-font-1"}
+          >
+            {" "}
+            GitHub{" "}
+          </button>
+          <button
+            onclick={() => {
+              window.open("https://3d-pacman.vercel.app/");
+            }}
+            class={style.gitHuButton + " custom-font-1"}
+          >
             {" "}
             Live Link{" "}
           </button>
@@ -155,11 +196,19 @@ export function Projects() {
         </div>
         <div class={style.projectIndicators}>
           {/* GitHub Link */}
-          <button class={style.gitHuButton + " custom-font-1"}> GitHub </button>
-          <button class={style.gitHuButton + " custom-font-1"}>
+          <button
+            onclick={() => {
+              window.open("https://github.com/TsotneDarjania/telegram-bot");
+            }}
+            class={style.gitHuButton + " custom-font-1"}
+          >
+            {" "}
+            GitHub{" "}
+          </button>
+          {/* <button class={style.gitHuButton + " custom-font-1"}>
             {" "}
             Live Link{" "}
-          </button>
+          </button> */}
         </div>
       </div>
 
@@ -199,7 +248,12 @@ export function Projects() {
         </div>
         <div class={style.projectIndicators}>
           {/* GitHub Link */}
-          <button class={style.gitHuButton + " custom-font-1"}>
+          <button
+            onclick={() => {
+              window.open("https://www.amazingtours.is/");
+            }}
+            class={style.gitHuButton + " custom-font-1"}
+          >
             {" "}
             Live Link{" "}
           </button>
@@ -240,9 +294,24 @@ export function Projects() {
         </div>
         <div class={style.projectIndicators}>
           {/* GitHub Link */}
-          <button class={style.gitHuButton + " custom-font-1"}> GitHub </button>
+          <button
+            onclick={() => {
+              window.open(
+                "https://github.com/TsotneDarjania/linux-virtual-machine"
+              );
+            }}
+            class={style.gitHuButton + " custom-font-1"}
+          >
+            {" "}
+            GitHub{" "}
+          </button>
           {/* GitHub Link */}
-          <button class={style.gitHuButton + " custom-font-1"}>
+          <button
+            onclick={() => {
+              window.open("https://linux-virtual-machine.vercel.app/");
+            }}
+            class={style.gitHuButton + " custom-font-1"}
+          >
             {" "}
             Live Link{" "}
           </button>

@@ -15,6 +15,12 @@
 
   z-index: 10;
 }
+@media only screen and (max-width: 1200px) {
+  .nav {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
 
 ul {
   display: flex;
@@ -29,6 +35,11 @@ ul {
   color: wheat;
 
   background-color: rgb(31, 29, 29);
+}
+@media only screen and (max-width: 1200px) {
+  .title {
+    font-size: 1.4rem;
+  }
 }
 
 .menuButton {
@@ -47,6 +58,31 @@ ul {
 
   transition: all 0.3s;
 }
+.authenticationButtons {
+  display: flex;
+  gap: 10px;
+}
+@media only screen and (max-width: 1200px) {
+  .authenticationButtons {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+    height: min-content;
+    width: min-content;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
 
 .menuButton:hover {
   background-color: rgb(90, 73, 31);
@@ -58,11 +94,27 @@ ul {
   color: rgb(146, 133, 107);
   background-color: rgb(56, 54, 49);
 }
+@media only screen and (max-width: 1200px) {
+  .heading {
+    font-size: 0.7rem;
+  }
+}
 
 .username {
   font-size: 1.7rem;
   font-weight: bold;
   color: rgb(230, 230, 230);
+}
+@media only screen and (max-width: 1200px) {
+  .username {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: rgb(230, 230, 230);
+
+    margin-top: -14px;
+
+    text-align: right;
+  }
 }
 
 .userModal {
@@ -85,6 +137,14 @@ ul {
 
   transform: rotate3d(0, 1, 0, 180deg);
 }
+@media only screen and (max-width: 1200px) {
+  .logOutIcon {
+    width: 33px;
+    height: 33px;
+
+    bottom: -40px;
+  }
+}
 
 .logOutIcon:hover {
   filter: grayscale(0%);
@@ -105,6 +165,14 @@ ul {
 
   transition: all 0.3s;
 }
+@media only screen and (max-width: 1200px) {
+  .menuIcon {
+    width: 33px;
+    height: 33px;
+
+    bottom: -40px;
+  }
+}
 
 .menuIcon:hover {
   background-color: rgb(247, 203, 115);
@@ -123,6 +191,14 @@ ul {
   background-color: rgb(119, 112, 112);
 
   transition: all 0.3s;
+}
+@media only screen and (max-width: 1200px) {
+  .notificationsIcon {
+    width: 33px;
+    height: 33px;
+
+    bottom: -40px;
+  }
 }
 
 .notificationsIcon:hover {
