@@ -79,13 +79,21 @@ export default function Skills() {
         <div class={style.skill + " custom-font-1"}>TypeScript</div>
         <div class={style.skill + " custom-font-1"}>C#</div>
         <div class={style.skill + " custom-font-1"}>Mongo DB</div>
+        <div class={style.skill + " custom-font-1"}>MySQL</div>
         <div class={style.skill + " custom-font-1"}>React</div>
         <div class={style.skill + " custom-font-1"}>NextJS</div>
         <div class={style.skill + " custom-font-1"}>Unity</div>
-        <div class={style.skill + " custom-font-1"}>Phase JS</div>
+        <div class={style.skill + " custom-font-1"}>Phaser JS</div>
         <div class={style.skill + " custom-font-1"}>Three JS</div>
         <div class={style.skill + " custom-font-1"}>Node JS</div>
         <div class={style.skill + " custom-font-1"}>Express</div>
+        <div class={style.skill + " custom-font-1"}>Framer</div>
+        <div class={style.skill + " custom-font-1"}>PHP</div>
+        <div class={style.skill + " custom-font-1"}>Laravel</div>
+        <div class={style.skill + " custom-font-1"}>Supabase</div>
+        <div class={style.skill + " custom-font-1"}>Solid JS</div>
+        <div class={style.skill + " custom-font-1"}>Webpack</div>
+        <div class={style.skill + " custom-font-1"}>NPM</div>
         {/* Add more skills as needed */}
       </div>
     </div>

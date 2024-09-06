@@ -58,6 +58,7 @@
 
 .projectImage {
   width: 40%;
+  height: 240px;
 
   border-radius: 10px;
 }
@@ -99,6 +100,8 @@
   justify-content: end;
 
   width: 100%;
+
+  margin-top: 10px;
 
   gap: 20px;
 }

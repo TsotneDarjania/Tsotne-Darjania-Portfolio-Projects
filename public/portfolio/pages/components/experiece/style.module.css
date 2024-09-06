@@ -35,7 +35,7 @@
 .dottes {
   position: absolute;
   width: 30px;
-  height: 1400px;
+  height: 1900px;
 
   margin-top: 190px;
 
@@ -143,6 +143,12 @@
 .workTechnologies {
   font-weight: bold;
   font-size: 1.3rem;
+  color: rgb(44, 177, 11);
+}
+.rightWorkTechnologies {
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-align: right;
   color: rgb(44, 177, 11);
 }
 

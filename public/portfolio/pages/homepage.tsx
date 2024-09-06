@@ -59,13 +59,13 @@ export default function homePage() {
           </div>
 
           <p data-aos="fade-up" class={style.heroText + " custom-font-2"}>
-            I specialize in building dynamic web apps and games. Beyond
-            JavaScript and web technologies, I also dive into data analysis with
-            Python, blending technical expertise with a curiosity for uncovering
-            insights. with a bit of fun along the way—whether it's a
-            cutting-edge application or an engaging game, I aim to make an
-            impact while enjoying the process. Off the clock, I'm either playing
-            football, gaming, or hanging out with my dogs
+            Specializing in dynamic web applications and games, with a focus on
+            JavaScript and web technologies, there's also a deep dive into data
+            analysis using Python—blending technical skills with a passion for
+            uncovering insights. Whether it's crafting cutting-edge applications
+            or creating engaging games, the goal is to make an impact while
+            having fun along the way. Outside of coding, life is all about
+            football, gaming, and spending quality time with the dogs.
           </p>
           {/* <img
             class={style.tsotneImage}

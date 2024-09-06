@@ -1,0 +1,10 @@
+Name: name
+Email: email
+Subject: subject
+Message: message
+
+Name: Tsote
+Email: asd@gmail.com
+Subject: samsaxuris
+Message: gamarjoba es aris mesigi
+
