@@ -21,4 +21,13 @@ This is my personal portfolio website, which showcases several projects as a dem
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/your-portfolio.git
+   git clone https://github.com/TsotneDarjania/Tsotne-Darjania-Portfolio-Projects
+
+2. install npm packages
+   ```bash
+   npm install
+
+3. start the development server:
+   ```bash
+   npm run dev
+
