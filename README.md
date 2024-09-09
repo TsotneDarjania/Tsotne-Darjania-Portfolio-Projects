@@ -1,4 +1,4 @@
-# My Portfolio Website
+# Tsotne Darjania Portfolio Website
 
 This is my personal portfolio website, which showcases several projects as a demonstration of my software development skills. I built this project from scratch, incorporating both backend and frontend technologies.
 
