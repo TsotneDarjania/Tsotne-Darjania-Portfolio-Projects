@@ -87,7 +87,7 @@ export function NewsFeed() {
           <div class={style.createPostModal}>
             {/* Close Button */}
             <img
-              src="/static/img/close.png"
+              src="../static/img/meetZone/close.png"
               alt="close"
               class={style.closeIcon}
               onclick={() => {
