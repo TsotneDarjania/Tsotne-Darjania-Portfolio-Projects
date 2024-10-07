@@ -1,0 +1,234 @@
+.hero {
+  margin-top: 15vh;
+
+  width: 100vw;
+  height: 100vh;
+
+  position: relative;
+
+  z-index: 100;
+
+  max-width: 1200px;
+
+  overflow-y: hidden;
+}
+
+.fixedHero {
+  position: fixed;
+  background-color: white;
+  z-index: 200;
+}
+
+.myImage {
+  position: absolute;
+  left: 5%;
+
+  margin-top: auto;
+  margin-bottom: auto;
+  top: 0;
+  bottom: 30%;
+
+  width: 40%;
+  height: 80%;
+
+  object-fit: cover;
+
+  animation-delay: 0.5s;
+
+  transition: 1s;
+
+  opacity: 0;
+  animation-name: show;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+.textContainer {
+  position: absolute;
+
+  right: 5%;
+
+  margin-top: auto;
+  margin-bottom: auto;
+  top: 0;
+  bottom: 30%;
+
+  width: 40%;
+  height: 80%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+
+  transition: 1s;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgb(56, 202, 11);
+
+  animation-delay: 1.5s;
+
+  opacity: 0;
+  animation-name: show;
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards;
+}
+
+.subHeading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: rgb(56, 202, 11);
+
+  margin-top: 20px;
+
+  animation-delay: 2s;
+
+  opacity: 0;
+  animation-name: show;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+.text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgb(226, 132, 9);
+
+  animation-delay: 2.5s;
+
+  opacity: 0;
+  animation-name: show;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.go-left {
+  left: -100vw;
+}
+
+.go-right {
+  right: -100vw;
+  opacity: 0;
+}
+
+.heroText {
+  position: absolute;
+  width: 80%;
+  height: fit-content;
+
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  top: 4%;
+
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: rgb(29, 158, 57);
+}
+
+.computerAnimation {
+  position: absolute;
+  left: 5%;
+  right: 0;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  bottom: -5vh;
+
+  width: fit-content;
+}
+
+@media screen and (max-width: 1400px) {
+  .heroText {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .computerAnimation {
+    position: absolute;
+    left: 5%;
+    right: 0;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    bottom: 5vh;
+
+    width: fit-content;
+  }
+}
+
+@media screen and (max-width: 461px) {
+  .computerAnimation {
+    position: absolute;
+    left: 5%;
+    right: 0;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    bottom: -10vh;
+
+    width: fit-content;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgb(56, 202, 11);
+
+    animation-delay: 1.5s;
+
+    opacity: 0;
+    animation-name: show;
+    animation-duration: 0.9s;
+    animation-fill-mode: forwards;
+  }
+
+  .subHeading {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgb(56, 202, 11);
+
+    margin-top: 20px;
+
+    animation-delay: 2s;
+
+    opacity: 0;
+    animation-name: show;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+  }
+
+  .text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(226, 132, 9);
+
+    animation-delay: 2.5s;
+
+    opacity: 0;
+    animation-name: show;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+  }
+}

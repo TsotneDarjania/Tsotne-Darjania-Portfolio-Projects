@@ -9,6 +9,7 @@ export default {
     meetZone: "./public/meetZone/index.tsx",
     portfolio: "./public/portfolio/index.tsx",
   },
+
   output: {
     filename: "[name]Bundle.js", // Generates meetZoneBundle.js and portfolioBundle.js
     path: path.resolve(__dirname, "public/build"), // Outputs to respective folders

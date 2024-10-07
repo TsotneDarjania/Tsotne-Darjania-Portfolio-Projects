@@ -1,3 +1,13 @@
+.homePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+
+  width: 100vw;
+  background-color: rgb(255, 255, 255);
+}
+
 .introText {
   position: absolute;
   left: 0;
@@ -92,7 +102,6 @@
       blink 0.1s step-end infinite alternate;
   }
 }
-
 @keyframes typing {
   from {
     width: 0;
@@ -122,10 +131,6 @@
 }
 
 .menuContent {
-  position: absolute;
-  top: 20vh;
-  left: 0;
-
   animation-delay: 5s;
   animation-name: show;
   animation-duration: 0.5s;
@@ -147,17 +152,6 @@
   }
 }
 
-.menuButtonContainer {
-  width: 100vw;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  max-width: 1200px;
-
-  padding: 20px 40px;
-}
 @media only screen and (max-width: 900px) {
   .menuButtonContainer {
     font-size: 1.6rem;
