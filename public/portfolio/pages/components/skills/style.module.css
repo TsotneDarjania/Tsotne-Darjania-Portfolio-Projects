@@ -6,6 +6,8 @@
   flex-direction: column;
 
   margin-top: 150px;
+
+  position: relative;
 }
 
 .title {
@@ -21,8 +23,7 @@
 }
 
 .container {
-  max-width: 1200px;
-  width: 90vw;
+  width: 100vw;
   height: 800px;
 
   position: relative; /* Important to position .skill elements relative to this container */
@@ -46,5 +47,35 @@
 @media only screen and (max-width: 900px) {
   .skill {
     font-size: 1.3rem;
+  }
+}
+
+.downloadButton {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 240px;
+  height: 50px;
+  background-color: rgb(80, 253, 103);
+  color: rgb(30, 36, 31);
+  font-weight: bold;
+  font-size: 1.3rem;
+  border-radius: 10px;
+  cursor: pointer;
+
+  border: 1px solid rgb(31, 49, 33);
+
+  transition: all 0.3s;
+}
+.downloadButton:hover {
+  background-color: rgb(29, 158, 57);
+}
+@media only screen and (max-width: 900px) {
+  .downloadButton {
+    font-size: 1rem;
   }
 }

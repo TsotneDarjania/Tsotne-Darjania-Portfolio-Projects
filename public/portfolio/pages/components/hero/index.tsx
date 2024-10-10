@@ -47,7 +47,6 @@ export function Hero() {
             <br />
           </p>
 
-          {/* ComputerAnimation */}
           {/* ComputerAnimation with dynamic size based on window width */}
           <div data-aos="flip-up" class={style.computerAnimation}>
             {windowWidth() > 800 ? (
