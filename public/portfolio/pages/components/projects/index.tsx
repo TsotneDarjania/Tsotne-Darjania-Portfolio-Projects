@@ -175,7 +175,7 @@ export function Projects() {
             Built entirely in <strong>Python</strong>, this Telegram bot
             automates the process of collecting and sending economic data from
             the
-            <strong>CRBAPC Economic</strong> website to a specific Telegram
+            <strong> CRBAPC Economic</strong> website to a specific Telegram
             channel.
             <br />- Used <strong>Python's requests</strong> library to scrape
             economic data from the website and{" "}

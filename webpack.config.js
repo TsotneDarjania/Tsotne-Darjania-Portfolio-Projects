@@ -8,6 +8,7 @@ export default {
   entry: {
     meetZone: "./public/meetZone/index.tsx",
     portfolio: "./public/portfolio/index.tsx",
+    plinkoGame: "./public/plinkoGame/index.ts",
   },
 
   output: {

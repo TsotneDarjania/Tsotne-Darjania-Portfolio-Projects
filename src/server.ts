@@ -10,6 +10,7 @@ import meetZonePageRouter from "./meetZone/routes/pageRouter";
 import meetZoneApiRouter from "./meetZone/routes/apiRoutes";
 import portfolioPageRouter from "./portfolio/routes/pageRouter";
 import portfolioApiRouter from "./portfolio/routes/apiRouter";
+import plinkoPageRouter from "./plinkoGame/routes/pageRouter";
 
 const app = express();
 const server = http.createServer(app);
@@ -103,6 +104,7 @@ app.use(meetZonePageRouter);
 app.use(meetZoneApiRouter);
 app.use(portfolioPageRouter);
 app.use(portfolioApiRouter);
+app.use(plinkoPageRouter);
 
 export function startServer() {
   server.listen(PORT, () => {

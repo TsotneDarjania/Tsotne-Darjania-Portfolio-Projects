@@ -115,7 +115,12 @@ export default function Skills() {
       >
         {/* Three.js scene will be rendered here */}
       </div>
-      <button class={style.downloadButton + " custom-font-1"}>
+      <button
+        onclick={() => {
+          window.open("../static/files/resume.pdf", "_blank");
+        }}
+        class={style.downloadButton + " custom-font-1"}
+      >
         Download Resume
       </button>
     </div>
