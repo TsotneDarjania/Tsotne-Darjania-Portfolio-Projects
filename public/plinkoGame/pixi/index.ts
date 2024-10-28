@@ -285,6 +285,17 @@ export class PixiGame {
   }
 
   kickBall(mode: "green" | "yellow" | "red") {
+    console.log("Balance : " + this.menuInterface.balanceText.text);
+    console.log("Bet : " + this.menuInterface.betText.text);
+
+    const balance = parseFloat(this.menuInterface.balanceText.text);
+    const bet = parseFloat(this.menuInterface.betText.text);
+
+    if (balance - bet < 0) {
+      alert("You don't have enough balance");
+      return;
+    }
+
     const newBalance =
       parseFloat(this.menuInterface.balanceText.text) -
       parseFloat(this.menuInterface.betText.text);
