@@ -5,4 +5,8 @@
 }
 
 body {
+  overflow: hidden;
+  background-color: #03040d;
+
+  /* color: #ff2911; */
 }

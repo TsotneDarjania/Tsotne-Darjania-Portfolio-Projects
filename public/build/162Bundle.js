@@ -1,1 +1,1 @@
-"use strict";(self.webpackChunkgeorgian_vibes=self.webpackChunkgeorgian_vibes||[]).push([[162],{2162:(e,s,i)=>{i.r(s),i(4732),i(10),i(480),i(8928),i(5285),i(9305),i(6958),i(243),i(7559),i(8723),i(7252),i(9935)}}]);
+"use strict";(self.webpackChunkgeorgian_vibes=self.webpackChunkgeorgian_vibes||[]).push([[162],{2162:(e,s,i)=>{i.r(s),i(4732),i(9010),i(8480),i(8928),i(5285),i(9305),i(6958),i(6444),i(7559),i(8723),i(7252),i(9935)}}]);
