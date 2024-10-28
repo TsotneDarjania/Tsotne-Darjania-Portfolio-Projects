@@ -12,7 +12,8 @@ export class Ball extends Sprite {
     texture: Texture,
     x: number,
     y: number,
-    public pixiGame: PixiGame
+    public pixiGame: PixiGame,
+    public color: "green" | "yellow" | "red"
   ) {
     super(texture);
     this.position.set(x, y);
@@ -38,7 +39,7 @@ export class Ball extends Sprite {
         restitution: 0.8, // Make it bouncy
       }
     );
-    this.matterBody.label = "ball";
+    this.matterBody.label = `${this.color}-ball`;
 
     // Add the Matter.js body to the world
     World.add(this.pixiGame.engine.world, this.matterBody);

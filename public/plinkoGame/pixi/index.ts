@@ -35,10 +35,10 @@ export class PixiGame {
 
   menuInterface!: MenuInterface;
 
-  betMode!: "green" | "yellow" | "red";
-
   constructor() {
-    this.app = new Application();
+    this.app = new Application({
+      resolution: window.devicePixelRatio || 1,
+    });
     this.engine = Engine.create();
     this.staticBallBodies = [];
     this.init();
@@ -240,11 +240,13 @@ export class PixiGame {
         lastBodyA = pair.bodyA;
         const { bodyA, bodyB } = pair;
 
-        if (bodyA.label !== "staticBall" && bodyA.label !== "ball") {
-          const targetBoxType = bodyA.label.split("-")[1];
+        if (bodyA.label !== "staticBall" && !bodyA.label.includes("ball")) {
+          const targetBoxColor = bodyA.label.split("-")[1];
           const targetBoxValue = parseFloat(bodyA.label.split("-")[2]);
 
-          if (targetBoxType === this.betMode) {
+          const ballColor = bodyB.label.split("-")[0];
+
+          if (targetBoxColor === ballColor) {
             // @ts-ignore
             if (bodyB.targetObject.isAlreadyInHole) return;
             // @ts-ignore
@@ -284,10 +286,7 @@ export class PixiGame {
     });
   }
 
-  kickBall(mode: "green" | "yellow" | "red") {
-    console.log("Balance : " + this.menuInterface.balanceText.text);
-    console.log("Bet : " + this.menuInterface.betText.text);
-
+  kickBall(color: "green" | "yellow" | "red") {
     const balance = parseFloat(this.menuInterface.balanceText.text);
     const bet = parseFloat(this.menuInterface.betText.text);
 
@@ -302,17 +301,15 @@ export class PixiGame {
 
     this.menuInterface.balanceText.text = newBalance.toFixed(2);
 
-    this.betMode = mode;
-
     let texture: Texture = this.greenCircleTexture;
 
-    if (this.betMode === "green") {
+    if (color === "green") {
       texture = this.greenCircleTexture;
     }
-    if (this.betMode === "yellow") {
+    if (color === "yellow") {
       texture = this.yellowCircleTexture;
     }
-    if (this.betMode === "red") {
+    if (color === "red") {
       texture = this.redCircleTexture;
     }
 
@@ -321,7 +318,8 @@ export class PixiGame {
       texture,
       this.app.renderer.width / 2,
       10,
-      this
+      this,
+      color
     );
   }
 }
